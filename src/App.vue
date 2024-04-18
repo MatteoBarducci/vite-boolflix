@@ -3,12 +3,15 @@
   import { store } from './store';
   import AppSearch from './components/AppSearch.vue';
   import MovieList from './components/MovieList.vue';
+  import TvSeriesList from './components/TvSeriesList.vue';
+
 
 
   export default{
     components: {
       AppSearch,
       MovieList,
+      TvSeriesList,
     },
     data() {
       return {
@@ -36,8 +39,8 @@
           api_key : 'e4248d98725290d3fc86ce4ddabdd358',
         };
 
-        if (store.searchedTvSerie !== ''){
-          queryParams.query = store.searchedTvSerie
+        if (store.searchedMovie !== ''){
+          queryParams.query = store.searchedMovie
         }
 
         axios.get(apiUrl, {params: queryParams})
@@ -56,6 +59,7 @@
 <template>
   <AppSearch @searchMovie="getMoviesFromApi, getSeriesFromApi"></AppSearch>
   <MovieList></MovieList>
+  <TvSeriesList></TvSeriesList>
 </template>
 
 <style lang="scss">
