@@ -4,7 +4,7 @@
 
 
     export default{
-        name: 'MovieList',
+        name: 'TvSeriesList',
         components: {
             Card,
         },
@@ -18,7 +18,7 @@
 
 <template>
     <div class="main-container">
-        <Card v-for="movie in store.MoviesInfo" :movieInfo="movie"></Card>
+        <Card v-for="tvSerie in store.TvSeriesInfo" :tvInfo="tvSerie"></Card>
     </div>
 </template>
 

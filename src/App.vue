@@ -30,6 +30,22 @@
           store.MoviesInfo = response.data.results
         })
       },
+      getSeriesFromApi(){
+        const apiUrl = 'https://api.themoviedb.org/3/search/tv';
+        let queryParams = {
+          api_key : 'e4248d98725290d3fc86ce4ddabdd358',
+        };
+
+        if (store.searchedTvSerie !== ''){
+          queryParams.query = store.searchedTvSerie
+        }
+
+        axios.get(apiUrl, {params: queryParams})
+        .then((response) => {
+          store.TvSeriesInfo = response.data.results
+        })
+
+      },
     },
     mounted(){
 
@@ -38,7 +54,7 @@
 </script>
 
 <template>
-  <AppSearch @searchMovie="getMoviesFromApi"></AppSearch>
+  <AppSearch @searchMovie="getMoviesFromApi, getSeriesFromApi"></AppSearch>
   <MovieList></MovieList>
 </template>
 
