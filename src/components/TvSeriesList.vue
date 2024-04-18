@@ -17,6 +17,7 @@
 </script>
 
 <template>
+    <h2>Serie</h2>
     <div class="main-container">
         <Card v-for="tvSerie in store.TvSeriesInfo" :tvInfo="tvSerie"></Card>
     </div>
@@ -28,6 +29,11 @@
 .main-container{
     display: flex;
     flex-wrap: wrap;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 </style>

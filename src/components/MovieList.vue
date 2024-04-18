@@ -17,6 +17,7 @@
 </script>
 
 <template>
+    <h2>Film</h2>
     <div class="main-container">
         <Card v-for="movie in store.MoviesInfo" :movieInfo="movie"></Card>
     </div>
@@ -28,6 +29,11 @@
 .main-container{
     display: flex;
     flex-wrap: wrap;
+
 }
 
+h2{
+    margin-bottom: 20px;
+    text-align: center;
+}
 </style>

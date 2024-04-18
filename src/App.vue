@@ -47,17 +47,15 @@
         .then((response) => {
           store.TvSeriesInfo = response.data.results
         })
-
       },
     },
     mounted(){
-
     }
   }
 </script>
 
 <template>
-  <AppSearch @searchMovie="getMoviesFromApi, getSeriesFromApi"></AppSearch>
+  <AppSearch @searchMovie="getMoviesFromApi(); getSeriesFromApi()"></AppSearch>
   <MovieList></MovieList>
   <TvSeriesList></TvSeriesList>
 </template>

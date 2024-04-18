@@ -5,16 +5,26 @@
         props:{
             movieInfo : Object,
             tvInfo: Object,
+        },
+        data() {
+            return {
+                imgUrl: 'https://image.tmdb.org/t/p/w342'
+            };
+        },
+        methods: {
+            getImageUrl(name) {
+                return new URL(`${name}`, import.meta.url).href
+            }
         }
     }
 </script>
 
 <template>
     <div class="card-container">
-        <div><strong>Titolo: </strong>{{ movieInfo.title }} {{ tvInfo.name }}</div>
-        <div><strong>Titolo originale: </strong>{{ movieInfo.original_title }} {{ tvInfo.original_name }}</div>
-        <div><strong>Lingua originale: </strong>{{ movieInfo.original_language }} {{ tvInfo.original_language }}</div>
-        <div><strong>Media dei voti: </strong>{{ movieInfo.vote_average }} {{ tvInfo.vote_average }}</div>
+        <div><strong>Titolo: </strong>{{ movieInfo ? movieInfo.title : tvInfo.name }}</div>
+        <div><strong>Titolo originale: </strong>{{  movieInfo ? movieInfo.original_title : tvInfo.original_name }} </div>
+        <div><strong>Lingua originale: </strong>{{ movieInfo ? movieInfo.original_language : tvInfo.original_language }} </div>
+        <div><strong>Media dei voti: </strong>{{ movieInfo ? movieInfo.vote_average : tvInfo.vote_average }} </div>
     </div>
 </template>
 
@@ -29,6 +39,10 @@
     margin: 30px 10px;
     border: dashed;
     height: 300px
+
+    img{
+        width: 100%;
+    }
 }
 
 </style>
