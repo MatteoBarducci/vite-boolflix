@@ -3,28 +3,67 @@
     export default{
         name: 'Card',
         props:{
-            movieInfo : Object,
-            tvInfo: Object,
+            cardInfo: Object
         },
         data() {
             return {
-                imgUrl: 'https://image.tmdb.org/t/p/w342'
+                imgUrl: 'https://image.tmdb.org/t/p/w342',
+                supportedFlags: [
+                    'fr',
+                    'it',
+                    'en',
+                    'es',
+                    'ja',
+                    'cn',
+                    'zh'
+                ]
             };
         },
         methods: {
-            getImageUrl(name) {
-                return new URL(`${name}`, import.meta.url).href
-            }
+            getFlag(){
+                let flag;
+
+                if(this.cardInfo.original_language === 'en'){
+                    flag = '🇬🇧';
+                } else if (this.cardInfo.original_language === 'it'){
+                    flag = '🇮🇹';
+                } else if (this.cardInfo.original_language === 'es'){
+                    flag = '🇪🇸';
+                } else if (this.cardInfo.original_language === 'fr'){
+                    flag = '🇫🇷';
+                } else if (this.cardInfo.original_language === 'ja'){
+                    flag = '🇯🇵';
+                } else if (this.cardInfo.original_language === 'cn'||'zh'){
+                    flag = '🇨🇳';
+                }
+                return flag
+            },
+            getImageUrl(imagePath) {
+                return new URL('https://image.tmdb.org/t/p/w342'+imagePath, import.meta.url).href
+            },
+            getRoundedVote(vote){
+                let halfVote = vote/2
+                return Math.round(halfVote)
+            },
         }
     }
 </script>
 
 <template>
     <div class="card-container">
-        <div><strong>Titolo: </strong>{{ movieInfo ? movieInfo.title : tvInfo.name }}</div>
-        <div><strong>Titolo originale: </strong>{{  movieInfo ? movieInfo.original_title : tvInfo.original_name }} </div>
-        <div><strong>Lingua originale: </strong>{{ movieInfo ? movieInfo.original_language : tvInfo.original_language }} </div>
-        <div><strong>Media dei voti: </strong>{{ movieInfo ? movieInfo.vote_average : tvInfo.vote_average }} </div>
+        <!-- Immagine -->
+        <img :src="getImageUrl(cardInfo.poster_path)">
+        <!-- Titoli -->
+        <div><strong>Titolo: </strong>{{ cardInfo.title ? cardInfo.title : cardInfo.name }}</div>
+        <div><strong>Titolo originale: </strong>{{  cardInfo.title ? cardInfo.original_title : cardInfo.original_name }} </div>
+        <!-- Lingua originale -->
+        <div>
+            <strong>Lingua originale: </strong>
+            <span v-if="supportedFlags.includes(cardInfo.original_language)">{{ getFlag() }}</span>
+            <span v-else>{{ cardInfo.original_language }}</span>
+        </div>
+        <!-- Voto -->
+        <div><strong>Media dei voti: </strong>{{ getRoundedVote(cardInfo.vote_average) }} </div>
     </div>
 </template>
 
@@ -42,6 +81,7 @@
 
     img{
         width: 100%;
+        height: 100%;
     }
 }
 

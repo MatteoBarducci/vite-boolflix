@@ -4,7 +4,7 @@
 
 
     export default{
-        name: 'TvSeriesList',
+        name: 'Results',
         components: {
             Card,
         },
@@ -17,10 +17,19 @@
 </script>
 
 <template>
-    <h2>Serie</h2>
-    <div class="main-container">
-        <Card v-for="tvSerie in store.TvSeriesInfo" :tvInfo="tvSerie"></Card>
-    </div>
+    <section>
+        <h2>Film</h2>
+        <div class="main-container">
+            <Card v-for="movie in store.MoviesInfo" :cardInfo="movie"></Card>
+        </div>
+    </section>
+
+    <section>
+        <h2>Serie tv</h2>
+        <div class="main-container">
+            <Card v-for="tvSerie in store.TvSeriesInfo" :cardInfo="tvSerie"></Card>
+        </div>
+    </section>
 </template>
 
 <style scoped lang="scss">
@@ -29,11 +38,11 @@
 .main-container{
     display: flex;
     flex-wrap: wrap;
+
 }
 
 h2{
-    text-align: center;
     margin-bottom: 20px;
+    text-align: center;
 }
-
 </style>

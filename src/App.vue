@@ -2,16 +2,15 @@
   import axios from 'axios';
   import { store } from './store';
   import AppSearch from './components/AppSearch.vue';
-  import MovieList from './components/MovieList.vue';
-  import TvSeriesList from './components/TvSeriesList.vue';
+  import Results from './components/Results.vue';
+
 
 
 
   export default{
     components: {
       AppSearch,
-      MovieList,
-      TvSeriesList,
+      Results,
     },
     data() {
       return {
@@ -56,8 +55,7 @@
 
 <template>
   <AppSearch @searchMovie="getMoviesFromApi(); getSeriesFromApi()"></AppSearch>
-  <MovieList></MovieList>
-  <TvSeriesList></TvSeriesList>
+  <Results></Results>
 </template>
 
 <style lang="scss">
