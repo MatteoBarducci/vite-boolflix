@@ -1,7 +1,7 @@
 <script>
   import axios from 'axios';
   import { store } from './store';
-  import AppSearch from './components/AppSearch.vue';
+  import AppHeader from './components/AppHeader.vue';
   import Results from './components/Results.vue';
 
 
@@ -9,7 +9,7 @@
 
   export default{
     components: {
-      AppSearch,
+      AppHeader,
       Results,
     },
     data() {
@@ -54,12 +54,25 @@
 </script>
 
 <template>
-  <AppSearch @searchMovie="getMoviesFromApi(); getSeriesFromApi()"></AppSearch>
-  <Results></Results>
+  <div id="main-bg">
+    <header>
+      <AppHeader @searchMovie="getMoviesFromApi(); getSeriesFromApi()"></AppHeader>
+    </header>
+    <main>
+      <Results></Results>
+    </main>
+  </div>
 </template>
 
 <style lang="scss">
   @use './style/generic.scss';
+
+#main-bg{
+  background-color: black;
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
 
 
 </style>

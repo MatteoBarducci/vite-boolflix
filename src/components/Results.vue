@@ -18,14 +18,14 @@
 
 <template>
     <section>
-        <h2>Film</h2>
+        <h1>Film</h1>
         <div class="main-container">
             <Card v-for="movie in store.MoviesInfo" :cardInfo="movie"></Card>
         </div>
     </section>
 
     <section>
-        <h2>Serie tv</h2>
+        <h1>Serie tv</h1>
         <div class="main-container">
             <Card v-for="tvSerie in store.TvSeriesInfo" :cardInfo="tvSerie"></Card>
         </div>
@@ -37,12 +37,15 @@
 
 .main-container{
     display: flex;
-    flex-wrap: wrap;
-
+    flex-wrap: nowrap;
+    color: white;
+    overflow-x: auto;
 }
 
-h2{
-    margin-bottom: 20px;
+h1{
+    margin: 30px 0 18px;
     text-align: center;
+    color: white;
+    font-size: 30px;
 }
 </style>
