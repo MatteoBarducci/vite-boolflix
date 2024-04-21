@@ -91,6 +91,10 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        text-align: center;
+        border: 1px solid white;
+        border-radius: 10px;
+        width: 240px;
     }
 
     
