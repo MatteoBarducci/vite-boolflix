@@ -18,7 +18,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo netflix">
             </div>
             <nav>
-                <input type="text" placeholder="Cerca il nome del film" v-model="store.searchedMovie">
+                <input type="text" placeholder="Cerca il nome del film" v-model="store.searchedMovie" @keyup.enter="$emit('searchMovie')">
                 <button @click="$emit('searchMovie')">Search</button>
             </nav>
         </div>
