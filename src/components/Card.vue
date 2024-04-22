@@ -54,7 +54,7 @@
         <!-- Immagine -->
         <div class="img-container">
             <img :src="getImageUrl(cardInfo.poster_path)" v-if="cardInfo.poster_path">
-            <div class="no-img" v-else>Immagine non disponibile</div>
+            <div class="no-img" v-else> <strong>Titolo: </strong>{{ cardInfo.title ? cardInfo.title : cardInfo.name }}. <br> Immagine non disponibile</div>
         </div>
 
         <!-- Info -->
@@ -69,7 +69,10 @@
                 <span v-else>{{ cardInfo.original_language }}</span>
             </div>
             <!-- Voto -->
-            <div><strong>Media dei voti: </strong>{{ getRoundedVote(cardInfo.vote_average) }} </div>
+            <div><strong>Media dei voti: </strong>
+                <i v-for="n in getRoundedVote(cardInfo.vote_average)" class="fa-solid fa-star"></i>
+                <i v-for="n in 5 - getRoundedVote(cardInfo.vote_average)" class="fa-regular fa-star"></i>
+            </div>
         </div>
     </div>
 </template>
